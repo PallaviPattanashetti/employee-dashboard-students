@@ -35,6 +35,9 @@ const EmployeeModal = ({ type, employee, refreshEmployees }: { type: 'Add' | 'Ed
 
     // Modal Functions
     const onOpenModal = () => {
+
+         console.log("Opening Modal. Type:", type, "Prop Employee:", employee);
+         
         if (type === "Edit") {
             setEmployeeToChange(employee as Employee);
         }
@@ -43,12 +46,17 @@ const EmployeeModal = ({ type, employee, refreshEmployees }: { type: 'Add' | 'Ed
     };
 
     const onCloseModal = () => {
+        console.log("Closing Modal and resetting state");
         setOpenModal(false);
         setEmployeeToChange({ id: 0, name: "", jobTitle: "", hireDate: "", details: "", status: "" });
     };
 
     // Change employee functions
     const handleEmployeeToChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+
+           console.log("Submit triggered. Current state:", employeeToChange);
+
+
         setEmployeeToChange({
             ...employeeToChange,
             [e.target.id]: e.target.value,
@@ -118,7 +126,7 @@ const EmployeeModal = ({ type, employee, refreshEmployees }: { type: 'Add' | 'Ed
     return (
         <Dialog >
             <DialogTrigger asChild>
-                {/* <Button variant="outline">Edit Profile</Button> */}
+                <Button variant="outline">Edit Profile</Button>
                 <Button
                     color="success"
                     className={type === "Add" ? "flex items-center gap-1" : ""}

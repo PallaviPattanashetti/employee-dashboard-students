@@ -67,6 +67,8 @@ const EmployeeEditView = ({ employee, setEdit }: { employee: Employee, setEdit: 
                 <Button onClick={() => setEdit(false)}>Cancel</Button>
                 {employee && <Button variant="outline">Save Edits</Button>}
             </div>
+
+            
         </>
     )
 }

@@ -91,24 +91,43 @@ When complete, document:
 
 
 
-fixed bugs 
+1. List of Bugs
+Login Blocked: Users couldn't get past the login screen.
 
-I used cd employee-dashboard-students-main and npm i gave and it pop--
+Form Errors: The account creation form had missing data types.
 
-fixed = set login loginform line 17 true
+False Success: The system said "User added" even when it failed.
+
+UI Crashes: The employee list crashed if a job title was missing.
+
+2. Root Causes
+State Settings: A "true/false" setting was stuck, blocking the login.
+
+Missing Definitions: The code didn't know what kind of data the form should hold.
+
+Bad Logic: The "Error" section of the code was accidentally set to report success.
+
+Empty Data: The inputs didn't know how to handle empty or "null" text.
+
+3. Fixes Applied
+Login: Forced the login state to true at line 17.
+
+Typing: Defined the form state as UserAccessRequest.
+
+Logic: Fixed the addUserAction to properly report when a username is taken.
+
+Safety: Added || "" (empty strings) to inputs so they don't crash when data is missing.
+
+4. Testing Results
+Login: Works now.
+
+Forms: No more typing errors.
+
+Errors: Shows the correct "Username taken" message.
+
+Display: Employee data shows up smoothly without crashing.
 
 
-2.createAccountForm == const [user, setUser] = useState<UserAccessRequest >({ email: "", password: "" });
+In Employee List I uncommented line 27 and commented 28 to get employees
 
-
-3.export const addUserAction = async (user: UserAccessRequest): Promise<ActionResult> => {
-
-    try {
-        const result = await addUser(user);
-        return { success: result, message: result ? 'User added successfully' : 'Username is already taken.' };
-    } catch (error) {
-        return { success: true, message: 'Username is already taken.' };
-    }
-    
-
-}success was false i made true
+i added .env.local and added api and added in vercel

@@ -24,8 +24,8 @@ const EmployeeList = () => {
     const clearEmployeeCache = async () => {
         try {
             // const result: Employee[] | "Not Authorized" = [];
-            // const result = await getEmployeesAction();
-            const result = { success: false, data: [] };
+            const result = await getEmployeesAction();
+            // const result = await { success: false, data: [] };
 
             console.log('result: ', result);
             console.log('this seems fine');
@@ -83,11 +83,11 @@ const EmployeeList = () => {
         }
 
         handleGet();
-    }, [clearEmployeeCache])
+    }, [])
 
     // Sorting the employees
     useEffect(() => {
-        const sortingEmployees = deletedEmployees;
+        const sortingEmployees = [...deletedEmployees];
 
         const handleSorting = () => {
             console.log('sorting employees correctly');

@@ -15,7 +15,7 @@ const EmployeeDisplay = ({ employee, setEdit }: { employee: Employee, setEdit: (
         <>
             <div>
                 <p className="text-sm font-semibold">Job Title</p>
-                <Input value={employee.jobTitle} />
+                <Input value={employee.jobTitle||""} />
             </div>
 
             <div>
@@ -25,7 +25,7 @@ const EmployeeDisplay = ({ employee, setEdit }: { employee: Employee, setEdit: (
 
             <div>
                 <p className="text-sm font-semibold">Status</p>
-                <Select>
+                <Select value={employee.status||""}>
                     <SelectTrigger>
                         <SelectValue placeholder="Select a status" />
                     </SelectTrigger>
